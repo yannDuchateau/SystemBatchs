@@ -1,1 +1,1 @@
-dir /B /o:n %1\*.* >liste_des_fichiers_de_%1.txt
+odir /B /o:n %1\*.* >File_list_Of_de_%1.txt
