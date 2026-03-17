@@ -8,6 +8,6 @@ SETLOCAL enableextensions
     )
   )
 ) > "%temp%\tmp.vbs"
-cscript //nologo "%temp%\tmp.vbs" > C:\Temp\Disk_status.txt
+cscript //nologo "%temp%\tmp.vbs" > %Public%\Desktop\Disk_status.txt
 del "%temp%\tmp.vbs"
-notepad C:\Temp\Disk_status.txt
+notepad %Public%\Desktop\Disk_status.txt
