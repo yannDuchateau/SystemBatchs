@@ -1,6 +1,6 @@
 @echo off
-echo EXECUTION NETTOYAGE TOTAL
-echo ne pas se fier aux messages disant  fichier ou repertoire introuvable...
+echo Default Microsoft Internet Browser cleanup. Beware, it can erase your cached passwords too...
+echo Do not pay attention to messages saying directory not found...
 RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 8
 echo.
 echo.
@@ -16,9 +16,9 @@ attrib -R -S -H "%USERPROFILE%\AppData\Local\Temp\*.*"
 attrib -R -S -H "%USERPROFILE%\AppData\LocalLow\Temp\*.*"
 echo.
 echo.
-echo Fin du changements attribut fichiers suspects
+echo End Changing attributes for hidden suspicious files...
 echo.
-echo PURGE DES FICHIERS TEMPORAIRES
+echo PURGING TEMP Files...
 echo.
 echo.
 erase /f /s /q "%TEMP%\*.*"
@@ -27,7 +27,7 @@ erase /f /s /q "%USERPROFILE%\AppData\Local\Temp\*.*"
 erase /f /s /q "%USERPROFILE%\AppData\LocalLow\Temp\*.*"
 echo.
 echo.
-echo PURGE DES FICHIERS TEMPORAIRES TERMINEE
+echo TEMP Files PURGE DONE
 echo.
 echo NETTOYAGE INTERNET EXPLORER
 echo.
@@ -38,7 +38,7 @@ erase /f /s /q "%USERPROFILE%\Local Settings\Historique\*.*"
 erase /f /s /q "%USERPROFILE%\AppData\Local\Microsoft\Windows\History\*.*"
 echo.
 echo.
-echo Vidage des fichiers internet Temporaires
+echo Purging temporary internet Files...
 echo.
 echo.
 RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 8 
@@ -47,24 +47,24 @@ erase /f /s /q "%USERPROFILE%\AppData\Local\Microsoft\Windows\Temporary Internet
 erase /f /s /q "%USERPROFILE%AppData\Local\Microsoft\Windows\Temporary Internet Files"
 echo.
 echo.
-echo Vidage des Cookies
+echo Purging Cookies
 echo.
 echo.
 RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 2 
 erase /f /s /q "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Cookies"
 echo.
 echo.
-echo NETTOYAGE INTERNET EXPLORER EFFECTUE
+echo INTERNET EXPLORER CLEANUP DONE
 echo.
 echo.
-echo Si vous ne voulez pas effacer vos mots de passes 
-echo sauvegardes et vos saisies de formulaire achat en ligne
-echo fermez ce programme avec la croix
-echo sinon...
+echo If you do not want to erase your cached passwords 
+echo and your form data, please close this window
+echo by clicking the close window button.
+echo Otherwise...
 pause
 RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 16
 RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 32
 RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 255
 cls
-echo NETTOYAGE TOTAL EFFECTUE...
+echo FULL internet browser CLEANUP DONE
 pause
