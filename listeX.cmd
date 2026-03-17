@@ -1,0 +1,1 @@
+dir /B /o:n %1\*.* >liste_des_fichiers_de_%1.txt
