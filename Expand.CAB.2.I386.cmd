@@ -1,12 +1,12 @@
 @echo off
-ECHO CREATION DES DOSSERS DE TRAVAIL
+ECHO CREATING WORK FOLDERS FO CAB FILES EXTRACTION
 mkdir Cabs
 move *.cab Cabs
 mkdir tmpdir
 del tmpdir\*.*
 mkdir Add_To_I386
 
-ECHO DECOMPRESSION EXTRACT
+ECHO DECOMPRESSION THRU EXTRACT
 cd Cabs
 for %%i in (*.cab) do ..\extract.exe /Y /E /L ..\tmpdir\ %%i
 cd..
@@ -16,10 +16,10 @@ attrib -R *.*
 dir /W
 cd..
 
-ECHO RESULTAT DECOMPRESSION EXTRACT
+ECHO RESULT UNCOMPRESSION EXTRACT
 pause
 
-ECHO DECOMPRESSION EXPAND
+ECHO UNCOMPRESSION EXPAND
 cd Cabs
 for %%i in (*.cab) do expand.exe  -F:*.* %%i ..\tmpdir\
 cd..
@@ -29,19 +29,19 @@ attrib -R *.*
 dir /W
 del *.cab
 cd..
-ECHO RESULTAT DECOMPRESSIONS
+ECHO UNCOMPRESSION RESULT
 pause
 
 cd tmpdir
 for %%j in (*.*) do makecab %%j
 dir /w
-ECHO RESULTAT DECOMPRESSION-COMPRESSION
+ECHO RESULT UNCOMPRESSION-COMPRESSION
 pause
-ECHO DEPLACEMENT COMPRESSION
+ECHO DISPLACEMENT COMPRESSION
 
 move *.**_ ..\Add_To_I386
 cd..
 
 call listeX.cmd Add_To_I386
 rmdir /q /s tmpdir
-start liste_des_fichiers_de_Add_To_I386.txt
+start Add_To_I386.txt
