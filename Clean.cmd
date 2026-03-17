@@ -44,14 +44,14 @@ echo.
 RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 8 
 erase /f /s /q "%USERPROFILE%\Local Settings\Temporary Internet Files\*.*"
 erase /f /s /q "%USERPROFILE%\AppData\Local\Microsoft\Windows\Temporary Internet Files\*.*"
-erase /f /s /q "%USERPROFILE%AppData\Local\Microsoft\Windows\Temporary Internet Files
+erase /f /s /q "%USERPROFILE%AppData\Local\Microsoft\Windows\Temporary Internet Files"
 echo.
 echo.
 echo Vidage des Cookies
 echo.
 echo.
 RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 2 
-erase /f /s /q "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Cookies
+erase /f /s /q "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Cookies"
 echo.
 echo.
 echo NETTOYAGE INTERNET EXPLORER EFFECTUE
