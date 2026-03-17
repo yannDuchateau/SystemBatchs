@@ -1,4 +1,6 @@
 @echo off
+rem Compatible with windows NT or Windows 2000
+rem This is how we patched/Upated the \i386 install folder for repairs/Reinstalls.
 ECHO CREATING WORK FOLDERS FO CAB FILES EXTRACTION
 mkdir Cabs
 move *.cab Cabs
