@@ -1,32 +1,29 @@
 @echo off
 cls
-
-echo Ce Script va faire ce qui suit:
-echo Desactive Data Logging Services
+echo This script will do the following:
+echo Disable Data Logging Services
 echo Configure Windows Explorer
-echo Edite le fichier Hosts pour bloquer l'envoi de donnees de telemetrie a Microsoft
+echo Edit the Hosts file to block telemetry data from being sent to Microsoft
 echo.
-echo appuyez sur une touche pour continuer...
+echo Press any key to continue...
 pause > NUL
 
-echo Verification execution en mode Administrateur...
+echo Checking execution is in Administrator mode...
 echo.
 openfiles > NUL 2>&1
 if %errorlevel%==0 (
     echo Elevation found! Proceeding...
 ) else (
-    echo Vous devez executer en tant que Administrateur...
-    echo Ce batch ne peut faire son travail sans elevation!
-    echo.
-    echo Clic droit sur le batch et selectionner ^'Executer en tant que Administrateur^' pour essayer a nouveau...
-    echo.
-    echo appuyez sur une touche pour quitter...
+echo You must run as Administrator...
+echo This batch file cannot function without elevation!
+echo Right-click on the batch file and select 'Run as Administrator' to try again...
+echo Press any key to exit...
     pause > NUL
     exit
 )
 
 echo.
-echo Desactivation de Data Logging Services
+echo Deactivating Data Logging Services
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v AllowTelemetry /t REG_DWORD /d 0 /f > NUL 2>&1
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v AllowTelemetry /t REG_DWORD /d 0 /f > NUL 2>&1
 schtasks /change /TN "\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" /DISABLE
@@ -37,7 +34,7 @@ schtasks /change /TN "\Microsoft\Windows\Customer Experience Improvement Program
 echo "" > C:\ProgramData\Microsoft\Diagnosis\ETLLogs\AutoLogger\AutoLogger-Diagtrack-Listener.etl
 
 echo.
-echo Edition du fichier Hosts
+echo Editing Hosts file
 
 SET NEWLINE=^& echo.
 
@@ -134,9 +131,9 @@ IF %ERRORLEVEL% NEQ 0 ECHO %NEWLINE%^0.0.0.0 feedback.search.microsoft.com>>%WIN
 
 echo.
 echo.
-echo Assurez vous aussi de faire ce qui suit:
-echo Dirigez vous dans Parametres > Confidentialite, et desactivez tout, sauf ce dont vous avez besoin.
-echo Pendant que vous etes sur la page Confidentialite, allez dans commentaires, et selectionnez Jamais dans la premiere coche, et de Base dans la seconde coche.
+echo make sure to do the following:
+echo Go to Settings > Privacy, and turn off everything except what you need.
+echo.While you're on the Privacy page, go to Comments, and select Never in the first checkbox, and Basic in the second checkbox.
 
 pause
 netsh int ip reset c:\windows\Logs\resetlog.txt
